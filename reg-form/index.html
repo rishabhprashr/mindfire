@@ -26,28 +26,29 @@
       color: black;
       font-weight: bold;
     }
-
-    
-    #state,
-    #country,
-    #course {
-      width: 100%;
-      padding: 16px 20px;
-      border:solid;
-      border-radius: 4px;
-      background-color: transparent;
+    select{
       color: black;
-    
-      
     }
 
 
-    
+    #state,
+    #country,
+    #course,#selectname {
+      width: 100%;
+      padding: 16px 20px;
+      border: solid;
+      border-radius: 4px;
+      background-color: transparent;
+      color: black;
+
+
+    }
   </style>
   <title>Student Registration Form </title>
 </head>
 
 <body>
+  <!--var x=uILUP-BR9kPhMpoOfE-JVeSDBX7qcR7ly51oeDotYI9hrrsd3rvJKCCuH2iox2Ee8pQ-->
   <div class="container">
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4 circle responsive-img" src="925717552s.png" alt="" width="172" height="172">
@@ -77,12 +78,18 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <form>
+        <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
           <div class="form-group">
             <i class="material-icons prefix">account_circle</i>
 
             <label class="autocomplete" for="Name"><b>Name</b></label>
-            <input type="text" class="form-control" id="Name" placeholder="John Doe" maxlength="30" required>
+            <select class="custom-select d-block w-100" id="selectname" placeholder="" required>
+              <option value="-1">Choose...</option>
+              
+            </select>
+
+            <!--
+            <input type="text" class="form-control" id="name" placeholder="John Doe" maxlength="30" required> -->
           </div>
           <div class="form-group">
             <i class="material-icons prefix">email</i>
@@ -105,7 +112,7 @@
             <div class="col-md-5 mb-3">
               <i class="material-icons prefix">assistant_photo</i>
               <label for="country">Country</label>
-              <select class="custom-select d-block w-100" id="country" placeholder="Country" required>
+              <select class="custom-select d-block w-100" id="country" placeholder="Country" onchange="changeFunc(value) required>
                 <option value="-1">Choose...</option>
                 <option>India</option>
               </select>
@@ -127,7 +134,7 @@
             <div class="col-md-3 mb-3">
               <i class="material-icons prefix">location_searching</i>
               <label for="zip">Zip</label>
-              <input type="number" class="form-control" id="zip" placeholder="Zip"  required>
+              <input type="number" class="form-control" id="zip" placeholder="Zip" required>
               <div class="invalid-feedback">
                 Zip code required.
               </div>
@@ -262,6 +269,9 @@
       </div>
     </div>
   </div>
+  <div id="id01"></div>
+  <script src="script.js"></script>
+
 </body>
 
 </html>
