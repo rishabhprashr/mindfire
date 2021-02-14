@@ -33,7 +33,6 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    
     <style>
       body {
         background: linear-gradient(to bottom, #b3d9ff 0%, #d6f5d6 100%);
@@ -47,26 +46,39 @@
         color: black;
       }
 
-      #myUL {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+      .autocomplete {
+        position: relative;
+        
       }
 
-      #myUL li {
-        border: 1px solid #ddd;
-        margin-top: -1px; /* Prevent double borders */
-        background-color: #f6f6f6;
-        padding: 12px;
-        text-decoration: none;
-        font-size: 18px;
-        color: black;
-        display: block;
+      .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        top: 100%;
+        left: 0;
+        right: 0;
       }
 
-      #myUL li :hover:not(.header) {
-        background-color: #eee;
+      .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
       }
+
+      .autocomplete-items div:hover {
+        background-color: #e9e9e9;
+      }
+
+      .autocomplete-active {
+        background-color: PowderBlue !important;
+        color: #ffffff;
+      }
+
+     
     </style>
     <title>Student Registration Form</title>
   </head>
@@ -112,28 +124,26 @@
             name="myForm"
             action="/action_page.php"
             onsubmit="return validateForm()"
+            autocomplete="off"
             method="post"
           >
-            <div class="form-group">
+            <div class="autocomplete form-group">
               <i class="material-icons prefix">account_circle</i>
 
               <label class="autocomplete" for="Name"><b>Name</b></label>
               <input
                 type="text"
                 id="selectname"
-                onkeyup="searchUser()"
-                placeholder="Search for names.."
+                class="form-control"
+                placeholder="John Doe"
                 title="Type in a name"
-                onfocusout="func()"
-              
-                
-
-              
               />
-              
-              <ul id="myUL" onclick="select" >
+
+              <!-- <ul id="myUL"  >
+                onkeyup="searchUser()"
+                onfocusout="func()"
                 
-              </ul>
+              </ul> -->
 
               <!-- <select class="custom-select d-block w-100" id="selectname" placeholder="Name" required> 
               <option value="-1">Choose...</option>
@@ -192,7 +202,6 @@
                   placeholder="Country"
                   onchange="changeFunc(value,'state')"
                   required
-                  
                 >
                   <option value="-1">Choose...</option>
                   <option>India</option>
