@@ -19,6 +19,7 @@ body {
     border: 1px solid #d4d4d4;
     border-bottom: none;
     border-top: none;
+    border-radius: 8px;
     z-index: 99;
     top: 100%;
     left: 0;
@@ -39,4 +40,28 @@ body {
   .autocomplete-active {
     background-color: PowderBlue !important;
     color: #ffffff;
+  }
+
+  .accordion {
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border-radius: 16px;
+    outline: none;
+    transition: 0.4s;
+    background-color:transparent;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .accordion:hover {
+    background-color:transparent;
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+    padding: 0 18px;
+    background-color:parent;
+    border-radius: 16px;
+    display: none;
+    overflow: hidden;
   }

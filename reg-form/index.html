@@ -32,7 +32,7 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
     <title>Student Registration Form</title>
   </head>
@@ -81,275 +81,299 @@
             autocomplete="off"
             method="post"
           >
-            <div class="autocomplete form-group">
-              <i class="material-icons prefix">account_circle</i>
+            <div class="col-md-12 mb-3">
+              <button class="accordion">Personal Information</button>
+              <div class="panel">
+                <div class="autocomplete form-group">
+                  <i class="material-icons prefix">account_circle</i>
 
-              <label class="autocomplete" for="Name"><b>Name</b></label>
-              <input
-                type="text"
-                id="selectname"
-                class="form-control"
-                placeholder="John Doe"
-                title="Type in a name"
-              />
+                  <label class="autocomplete" for="Name"><b>Name</b></label>
+                  <input
+                    type="text"
+                    id="selectname"
+                    class="form-control"
+                    placeholder="John Doe"
+                    title="Type in a name"
+                  />
+                </div>
 
-              <!-- <ul id="myUL"  >
+                <!-- <ul id="myUL"  >
                 onkeyup="searchUser()"
                 onfocusout="func()"
                 
-              </ul> -->
+                </ul> -->
 
-              <!-- <select class="custom-select d-block w-100" id="selectname" placeholder="Name" required> 
-              <option value="-1">Choose...</option>
+                <!-- <select class="custom-select d-block w-100" id="selectname" placeholder="Name" required> 
+                <option value="-1">Choose...</option>
               
-            </select>
-            -->
-
-              <!--
-            <input type="text" class="form-control" id="name" placeholder="John Doe" maxlength="30" required> -->
-            </div>
-            <div class="form-group">
-              <i class="material-icons prefix">email</i>
-              <label class="cust" for="Email">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="Email"
-                placeholder="John@email.com"
-                aria-describedby="emailHelp"
-                data-length="30"
-              />
-              <small id="emailHelp" class="form-text text-muted"
-                >We'll never share your email with anyone else.</small
-              >
-            </div>
-            <div class="form-group">
-              <i class="material-icons prefix">add_location</i>
-              <label class="cust" for="address">Address </label>
-              <input
-                type="text"
-                class="form-control"
-                id="address"
-                placeholder="Patia ..."
-                required
-                maxlength="30"
-              />
-              <small class="form-text text-muted">Street Address</small>
-            </div>
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control"
-                id="address"
-                required
-                maxlength="30"
-              />
-              <small class="form-text text-muted">Street Address Line 2 </small>
-            </div>
-            <div class="row">
-              <div class="col-md-5 mb-3">
-                <i class="material-icons prefix">assistant_photo</i>
-                <label for="country">Country</label>
-                <select
-                  class="custom-select d-block w-100"
-                  id="country"
-                  placeholder="Country"
-                  onchange="changeFunc(value,'state')"
-                  required
-                >
-                  <option value="-1">Choose...</option>
                 </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <i class="material-icons prefix">location_city</i>
-                <label for="state">State</label>
-                <select
-                  class="select custom-select d-block w-100"
-                  id="state"
-                  placeholder="State"
-                  required
-                >
-                  <option value="-1">Choose...</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please provide a valid state.
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <i class="material-icons prefix">location_searching</i>
-                <label for="zip">Zip</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="zip"
-                  placeholder="Zip"
-                  required
-                />
-                <div class="invalid-feedback">Zip code required.</div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <i class="material-icons prefix">contact_phone</i>
-                <label for="mobile">Mobile</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="mobno"
-                  placeholder="Mobile"
-                  required
-                  maxlength="10"
-                />
-                <div class="invalid-feedback">Mobile No required.</div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <i class="material-icons prefix">assignment_ind</i>
-                <label for="aadhar">Aadhar</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="aadhar"
-                  placeholder="Aadhar no"
-                  required
-                  maxlength="12"
-                />
-                <div class="invalid-feedback">Aadhar required.</div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="gender">Gender</label>
-                <br />
-                <br />
-                <label
-                  ><input
-                    type="radio"
-                    class="cust"
-                    name="Gender"
-                    value="Male"
-                  /><span> Male</span></label
-                >
-                <label
-                  ><input type="radio" name="Gender" value="Female" /><span>
-                    Female</span
-                  ></label
-                >
-                <label
-                  ><input type="radio" name="Gender" value="Other" /><span>
-                    Other</span
-                  ></label
-                >
-                <div class="invalid-feedback">Gender required.</div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <i class="material-icons prefix">library_books</i>
-                <label for="course">Course applied for</label>
-                <select
-                  class="custom-select d-block w-100"
-                  id="course"
-                  required
-                >
-                  <option value="-1">Choose...</option>
-                  <option>Computer Science</option>
-                  <option>Information Technology</option>
-                  <option>Electronics and Electrical</option>
-                </select>
-                <div class="invalid-feedback">Choicce required.</div>
-              </div>
+                -->
 
-              <div class="dat1 col-md-4 mb-3">
-                <i class="material-icons prefix">date_range</i>
-                <label for="dob">Date of birth</label>
-                <br />
-                <input type="date"  id="date" name="DOB" />
-                <div class="invalid-feedback">Choice required.</div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <i class="material-icons prefix">attach_file</i>
-                <label for="myfile">Academic docs zip:</label>
-                <input type="file" id="myfile" name="myfile" />
-                <div class="invalid-feedback">Choice required.</div>
+                <!--
+                <input type="text" class="form-control" id="name" placeholder="John Doe" maxlength="30" required> -->
+
+                <div class="form-group">
+                  <i class="material-icons prefix">email</i>
+                  <label class="cust" for="Email">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="Email"
+                    placeholder="John@email.com"
+                    aria-describedby="emailHelp"
+                    data-length="30"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >We'll never share your email with anyone else.</small
+                  >
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <i class="material-icons prefix">contact_phone</i>
+                    <label for="mobile">Mobile</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="mobno"
+                      placeholder="Mobile"
+                      required
+                      maxlength="10"
+                    />
+                    <div class="invalid-feedback">Mobile No required.</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="gender">Gender</label>
+                    <br />
+                    <br />
+                    <label
+                      ><input
+                        type="radio"
+                        class="cust"
+                        name="Gender"
+                        value="Male"
+                      /><span> Male</span></label
+                    >
+                    <label
+                      ><input type="radio" name="Gender" value="Female" /><span>
+                        Female</span
+                      ></label
+                    >
+                    <label
+                      ><input type="radio" name="Gender" value="Other" /><span>
+                        Other</span
+                      ></label
+                    >
+                    <div class="invalid-feedback">Gender required.</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <label for="aadhar">Aadhar</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="aadhar"
+                      placeholder="Aadhar no"
+                      required
+                      maxlength="12"
+                    />
+                    <div class="invalid-feedback">Aadhar required.</div>
+                  </div>
+                  <div class="dat1 col-md-6 mb-3">
+                    <i class="material-icons prefix">date_range</i>
+                    <label for="dob">Date of birth</label>
+                    <br />
+                    <input type="date" id="date" name="DOB" />
+                    <div class="invalid-feedback">Choice required.</div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-4 mb-3">
+            <div class="col-md-12 mb-3">
+              <button class="accordion">Address Information</button>
+              <div class="panel">
                 <div class="form-group">
-                  <label for="10th">10<sup>th</sup> Board</label>
+                  <i class="material-icons prefix">add_location</i>
+                  <label class="cust" for="address">Address </label>
                   <input
                     type="text"
                     class="form-control"
-                    id="board"
-                    placeholder="Board"
+                    id="address"
+                    placeholder="Patia ..."
                     required
+                    maxlength="30"
                   />
+                  <small class="form-text text-muted">Street Address</small>
                 </div>
-              </div>
-              <div class="col-md-4 mb-3">
                 <div class="form-group">
-                  <label for="10thpercentage">Percentage</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="percentage"
-                    placeholder="percentage"
+                    id="address"
                     required
+                    maxlength="30"
                   />
+                  <small class="form-text text-muted"
+                    >Street Address Line 2
+                  </small>
                 </div>
-              </div>
-
-              <div class="col-md-4 mb-3">
-                <div class="form-group">
-                  <label for="10thyop">YOP</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="yop"
-                    placeholder="Year of passing"
-                    required
-                  />
+                <div class="row">
+                  <div class="col-md-5 mb-3">
+                    <i class="material-icons prefix">assistant_photo</i>
+                    <label for="country">Country</label>
+                    <select
+                      class="custom-select d-block w-100"
+                      id="country"
+                      placeholder="Country"
+                      onchange="changeFunc(value,'state')"
+                      required
+                    >
+                      <option value="-1">Choose...</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a valid country.
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <i class="material-icons prefix">location_city</i>
+                    <label for="state">State</label>
+                    <select
+                      class="select custom-select d-block w-100"
+                      id="state"
+                      placeholder="State"
+                      required
+                    >
+                      <option value="-1">Choose...</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please provide a valid state.
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <i class="material-icons prefix">location_searching</i>
+                    <label for="zip">Zip</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="zip"
+                      placeholder="Zip"
+                      required
+                    />
+                    <div class="invalid-feedback">Zip code required.</div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <div class="form-group">
-                  <label for="12th">12<sup>th</sup> Board</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="board"
-                    placeholder="Board"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div class="form-group">
-                  <label for="12thpercentage">Percentage</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="percentage"
-                    placeholder="percentage"
-                    required
-                  />
-                </div>
-              </div>
 
-              <div class="col-md-4 mb-3">
-                <div class="form-group">
-                  <label for="12thyop">YOP</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="yop"
-                    placeholder="Year of passing"
-                    required
-                  />
+            <div class="col-md-12 mb-3">
+              <button class="accordion">Academic Information</button>
+              <div class="panel">
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <i class="material-icons prefix">library_books</i>
+                    <label for="course">Course applied for</label>
+                    <select
+                      class="custom-select d-block w-100"
+                      id="course"
+                      required
+                    >
+                      <option value="-1">Choose...</option>
+                      <option>Computer Science</option>
+                      <option>Information Technology</option>
+                      <option>Electronics and Electrical</option>
+                    </select>
+                    <div class="invalid-feedback">Choice required.</div>
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                    <i class="material-icons prefix">attach_file</i>
+                    <label for="myfile">Academic docs zip:</label>
+                    <input type="file" id="myfile" name="myfile" />
+                    <div class="invalid-feedback">Choice required.</div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="10th">10<sup>th</sup> Board</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="board"
+                        placeholder="Board"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="10thpercentage">Percentage</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="percentage"
+                        placeholder="percentage"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="10thyop">YOP</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="yop"
+                        placeholder="Year of passing"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="12th">12<sup>th</sup> Board</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="board"
+                        placeholder="Board"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="12thpercentage">Percentage</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="percentage"
+                        placeholder="percentage"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="12thyop">YOP</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="yop"
+                        placeholder="Year of passing"
+                        required
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -366,7 +390,6 @@
         </div>
       </div>
     </div>
-    <div id="id01"></div>
     <script src="script.js"></script>
   </body>
 </html>
