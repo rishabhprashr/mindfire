@@ -77,7 +77,6 @@
           <form
             name="myForm"
             action="/action_page.php"
-            onsubmit="return validateForm()"
             autocomplete="off"
             method="post"
           >
@@ -87,17 +86,25 @@
                 ><i class="material-icons left">person_add</i>Personal Info</a
               >
               <div class="show panel">
-                <div class="autocomplete form-group col-md-12 mb-3">
+                <div class="autocomplete form-field success form-group col-md-12 mb-3">
                   <i class="material-icons prefix">account_circle</i>
 
                   <label class="autocomplete" for="Name"><b>Name</b></label>
                   <input
                     type="text"
                     id="selectname"
-                    class="form-control"
+                    class="form-control validate"
                     placeholder="John Doe"
                     title="Type in a name"
+                    required
+                    onblur="check(id)"                    
+                    onfocus="check(id)" 
+                    onchange="check(id)"
+                  
+                    data-length="20"
                   />
+                  <span class="helper-text" data-error="wrong" data-success="right"></span>
+                  <small></small>
                   <div class="invalid-feedback">
                     Please select a valid name.
                   </div>
@@ -118,19 +125,24 @@
                 <!--
                 <input type="text" class="form-control" id="name" placeholder="John Doe" maxlength="30" required> -->
 
-                <div class="form-group col-md-12 mb-3">
+                <div class="form-field success form-group col-md-12 mb-3">
                   <i class="material-icons prefix">email</i>
                   <label class="cust" for="Email">Email</label>
                   <input
                     type="email"
-                    class="form-control"
-                    id="Email"
+                    class="form-control validate"
+                    id="email"
                     placeholder="John@email.com"
                     aria-describedby="emailHelp"
-                    data-length="30"
+                    maxlength="30"
+                    onblur="check(id)"                    
+                    onfocus="check(id)" 
+                    onchange="check(id)"
+                    
+                    
                   />
-                  <small id="emailHelp" class="form-text text-muted"
-                    >We'll never share your email with anyone else.</small
+                  <span class="helper-text" data-error="wrong" data-success="right"></span>
+                  <small></small
                   >
                   <div class="invalid-feedback">
                     Please select a valid Email.
@@ -138,32 +150,41 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-6 mb-3">
+                  <div class="col-md-6 mb-3 form-field success">
                     <i class="material-icons prefix">contact_phone</i>
                     <label for="mobile">Mobile</label>
                     <input
                       type="number"
-                      class="form-control"
+                      class="form-control validate"
                       id="mobno"
                       placeholder="Mobile"
                       required
                       maxlength="10"
+                      onblur="check(id)"                    
+                      onfocus="check(id)" 
+                      onchange="check(id)"
                     />
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
                     <div class="invalid-feedback">Mobile No required.</div>
                   </div>
 
-                  <div class="col-md-6 mb-3">
+                  <div class="col-md-6 mb-3 form-field success" >
                     <label for="gender">Gender</label>
                     <br />
                     <br />
                     <label
                       ><input
                         type="radio"
-                        class="cust"
+                        class="validate"
+                        id="gender"
                         name="Gender"
                         value="Male"
+                        onblur="check(id)"                    
+                        onfocus="check(id)" 
+                        onchange="check(id)"
                       /><span> Male</span></label
                     >
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
                     <label
                       ><input type="radio" name="Gender" value="Female" /><span>
                         Female</span
@@ -174,122 +195,153 @@
                         Other</span
                       ></label
                     >
+                    <br>
+                    
                     <div class="invalid-feedback">Gender required.</div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-6 mb-3">
+                  <div class="col-md-6 mb-3 form-field success">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="aadhar">Aadhar</label>
                     <input
                       type="number"
-                      class="form-control"
+                      class="form-control validate"
                       id="aadhar"
                       placeholder="Aadhar no"
                       required
                       maxlength="12"
+                      onblur="check(id)"                    
+                      onfocus="check(id)" 
+                      onchange="check(id)"
                     />
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
                     <div class="invalid-feedback">Aadhar required.</div>
                   </div>
-                  <div class="dat1 col-md-6 mb-3">
+                  <div class="dat1 col-md-6 mb-3 form-field success">
                     <i class="material-icons prefix">date_range</i>
                     <label for="dob">Date of birth</label>
                     <br />
-                    <input type="date" id="date" name="DOB" />
+                    <input type="date" id="date" name="DOB" 
+                    class="validate"
+                    onblur="check(id)"                    
+                    onfocus="check(id)" 
+                    onchange="check(id)"/>
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
                     <div class="invalid-feedback">Choice required.</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-md-12 mb-3">
+            <div class="col-md-12 mb-3 ">
               <a class="p-2 waves-effect waves-light btn-large accordion"
                 ><i class="material-icons left">place</i>Address Info</a
               >
               <div class="panel">
-                <div class="form-group col-md-12 mb-3">
+                <div class="form-field success form-group col-md-12 mb-3">
                   <i class="material-icons prefix">add_location</i>
                   <label class="cust" for="address">Address </label>
                   <input
                     type="text"
-                    class="form-control"
-                    id="address"
+                    class="form-control validate"
+                    id="address1"
                     placeholder="Patia ..."
                     required
                     maxlength="30"
+                    onblur="check(id)"                    
+                    onfocus="check(id)" 
+                    onchange="check(id)"
                   />
-                  <small class="form-text text-muted">Street Address</small>
+                  <span class="helper-text" data-error="wrong" data-success="right"></span>
                 </div>
-                <div class="form-group col-md-12 mb-3">
+                <div class="form-field success form-group col-md-12 mb-3">
                   <input
                     type="text"
-                    class="form-control"
-                    id="address"
+                    class="form-control validate"
+                    id="address2"
                     required
                     maxlength="30"
+                    onblur="check(id)"                    
+                    onfocus="check(id)" 
+                    onchange="check(id)"
                   />
-                  <small class="form-text text-muted"
-                    >Street Address Line 2
-                  </small>
+                  <span class="helper-text" data-error="wrong" data-success="right"></span>
                 </div>
                 <div class="row">
-                  <div class="col-md-3 mb-3">
+                  <div class="col-md-3 mb-3 form-field success">
                     <i class="material-icons prefix">assistant_photo</i>
                     <label for="country">Country</label>
                     <select
-                      class="custom-select d-block w-100"
+                      class="custom-select d-block w-100 validate"
                       id="country"
                       placeholder="Country"
                       onchange="changeFunc(value,'state')"
                       required
+                      onblur="check(id)"                    
+                      onfocus="check(id)" 
+                      onchange="check(id)"
                     >
                       <option value="-1">Choose...</option>
                     </select>
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
                     <div class="invalid-feedback">
                       Please select a valid country.
                     </div>
                   </div>
-                  <div class="col-md-3 mb-3">
+                  <div class="col-md-3 mb-3 form-field success">
                     <i class="material-icons prefix">location_city</i>
                     <label for="state">State</label>
                     <select
-                      class="select custom-select d-block w-100"
+                      class="select custom-select d-block w-100 validate"
                       id="state"
                       placeholder="State"
                       onchange="changeFunc(value,'city')"
+                      onblur="check(id)"                    
+                      onfocus="check(id)" 
+                      onchange="check(id)"
                       required
                     >
                       <option value="-1">Choose...</option>
                     </select>
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
                     <div class="invalid-feedback">
                       Please provide a valid state.
                     </div>
                   </div>
-                  <div class="col-md-3 mb-3">
+                  <div class="col-md-3 mb-3 form-field success">
                     <i class="material-icons prefix">location_on</i>
                     <label for="city">City</label>
                     <select
-                      class="select custom-select d-block w-100"
+                      class="select custom-select d-block w-100 validate"
                       id="city"
                       placeholder="City"
                       required
+                      onblur="check(id)"                    
+                      onfocus="check(id)" 
+                      onchange="check(id)"
                     >
                       <option value="-1">Choose...</option>
                     </select>
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
                     <div class="invalid-feedback">
                       Please provide a valid city.
                     </div>
                   </div>
-                  <div class="col-md-3 mb-3">
+                  <div class="col-md-3 mb-3 form-field success">
                     <i class="material-icons prefix">location_searching</i>
                     <label for="zip">Zip</label>
                     <input
                       type="number"
-                      class="form-control"
+                      class="form-control validate"
                       id="zip"
                       placeholder="Zip"
                       required
+                      onblur="check(id)"                    
+                      onfocus="check(id)" 
+                      onchange="check(id)"
                     />
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
                     <div class="invalid-feedback">Zip code required.</div>
                   </div>
                 </div>
@@ -302,97 +354,125 @@
               >
               <div class="panel">
                 <div class="row">
-                  <div class="col-md-4 mb-3">
-                    <div class="form-group">
+                  <div class="col-md-4 mb-3 ">
+                    <div class="form-group form-field success">
                       <label for="10th">10<sup>th</sup> Board</label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="board"
+                        class="form-control validate"
+                        id="board10"
                         placeholder="Board"
                         required
+                        onblur="check(id)"                    
+                        onfocus="check(id)" 
+                        onchange="check(id)"
                       />
+                      <span class="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                   </div>
                   <div class="col-md-4 mb-3">
-                    <div class="form-group">
+                    <div class="form-group form-field success">
                       <label for="10thpercentage">Percentage</label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="percentage"
+                        class="form-control validate"
+                        id="percentage10"
                         placeholder="percentage"
                         required
+                        onblur="check(id)"                    
+                        onfocus="check(id)" 
+                        onchange="check(id)"
                       />
+                      <span class="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                   </div>
 
                   <div class="col-md-4 mb-3">
-                    <div class="form-group">
+                    <div class="form-group form-field success">
                       <label for="10thyop">YOP</label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="yop"
+                        class="form-control validate"
+                        id="yop10"
                         placeholder="Year of passing"
                         required
+                        onblur="check(id)"                    
+                        onfocus="check(id)" 
+                        onchange="check(id)"
                       />
+                      <span class="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-4 mb-3">
-                    <div class="form-group">
+                    <div class="form-group form-field success">
                       <label for="12th">12<sup>th</sup> Board</label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="board"
+                        class="form-control validate"
+                        id="board12"
                         placeholder="Board"
                         required
+                        onblur="check(id)"                    
+                        onfocus="check(id)" 
+                        onchange="check(id)"
                       />
+                      <span class="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                   </div>
                   <div class="col-md-4 mb-3">
-                    <div class="form-group">
+                    <div class="form-group form-field success">
                       <label for="12thpercentage">Percentage</label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="percentage"
+                        class="form-control validate"
+                        id="percentage12"
                         placeholder="percentage"
                         required
+                        onblur="check(id)"                    
+                        onfocus="check(id)" 
+                        onchange="check(id)"
                       />
+                      <span class="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                   </div>
 
                   <div class="col-md-4 mb-3">
-                    <div class="form-group">
+                    <div class="form-group form-field success">
                       <label for="12thyop">YOP</label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="yop"
+                        class="form-control validate"
+                        id="yop12"
                         placeholder="Year of passing"
                         required
+                        onblur="check(id)"                    
+                        onfocus="check(id)" 
+                        onchange="check(id)"
                       />
+                      <span class="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-4 mb-3">
+                  <div class="col-md-4 mb-3 form-field success">
                     <i class="material-icons prefix">library_books</i>
                     <label for="course">Course applied for</label>
                     <select
-                      class="custom-select d-block w-100"
+                      class="custom-select d-block w-100 validate"
                       id="course"
                       required
+                      onblur="check(id)"                    
+                      onfocus="check(id)" 
+                      onchange="check(id)"
                     >
                       <option value="-1">Choose...</option>
                       <option>Computer Science</option>
                       <option>Information Technology</option>
                       <option>Electronics and Electrical</option>
                     </select>
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
                     <div class="invalid-feedback">Choice required.</div>
                   </div>
 
@@ -447,5 +527,6 @@
       <div class="footer-copyright"></div>
     </footer>
     <script src="script.js"></script>
+    <script src="validation.js"></script>
   </body>
 </html>

@@ -1,7 +1,6 @@
 var xmlhttp = new XMLHttpRequest();
 var url = "https://api.github.com/users";
 
-
 xmlhttp.open("GET", url, true);
 xmlhttp.onreadystatechange = function () {
   if (this.readyState == 4 && this.status == 200) {
@@ -62,7 +61,6 @@ function locfunc() {
   var xmlhttp = new XMLHttpRequest();
   var url = "https://www.universal-tutorial.com/api/getaccesstoken";
 
- 
   xmlhttp.open("GET", url, true);
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -105,7 +103,6 @@ function changeFunc($i, $p) {
       var ul = document.getElementById("state");
       ul.innerHTML = "";
     }
-    
   }
   if ($p === "city") {
     var ul = document.getElementById("city");
@@ -114,7 +111,6 @@ function changeFunc($i, $p) {
       "https://www.universal-tutorial.com/api/" + "cities" + "/" + $i + "/";
   }
 
- 
   req.open("GET", url, true);
   req.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -181,40 +177,27 @@ function autocomplete(inp, arr) {
       }
     }
   });
-  /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function (e) {
     var x = document.getElementById(this.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode == 40) {
-      /*If the arrow DOWN key is pressed,
-        increase the currentFocus variable:*/
       currentFocus++;
-      /*and and make the current item more visible:*/
       addActive(x);
     } else if (e.keyCode == 38) {
-      //up
-      /*If the arrow UP key is pressed,
-        decrease the currentFocus variable:*/
       currentFocus--;
-      /*and and make the current item more visible:*/
       addActive(x);
     } else if (e.keyCode == 13) {
-      /*If the ENTER key is pressed, prevent the form from being submitted,*/
       e.preventDefault();
       if (currentFocus > -1) {
-        /*and simulate a click on the "active" item:*/
         if (x) x[currentFocus].click();
       }
     }
   });
   function addActive(x) {
-    /*a function to classify an item as "active":*/
     if (!x) return false;
-    /*start by removing the "active" class on all items:*/
     removeActive(x);
     if (currentFocus >= x.length) currentFocus = 0;
     if (currentFocus < 0) currentFocus = x.length - 1;
-    /*add class "autocomplete-active":*/
     x[currentFocus].classList.add("autocomplete-active");
   }
   function removeActive(x) {
@@ -254,5 +237,6 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
 
 
