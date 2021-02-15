@@ -1,13 +1,14 @@
 var xmlhttp = new XMLHttpRequest();
 var url = "https://api.github.com/users";
 
+
+xmlhttp.open("GET", url, true);
 xmlhttp.onreadystatechange = function () {
   if (this.readyState == 4 && this.status == 200) {
     var myArr = JSON.parse(this.responseText);
     myFunction(myArr);
   }
 };
-xmlhttp.open("GET", url, true);
 xmlhttp.send();
 var ulist = [];
 function myFunction(arr) {
@@ -61,6 +62,8 @@ function locfunc() {
   var xmlhttp = new XMLHttpRequest();
   var url = "https://www.universal-tutorial.com/api/getaccesstoken";
 
+ 
+  xmlhttp.open("GET", url, true);
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var myArr = JSON.parse(this.responseText);
@@ -71,8 +74,6 @@ function locfunc() {
       console.log(tok);
     }
   };
-  xmlhttp.open("GET", url, true);
-
   xmlhttp.setRequestHeader(
     "api-token",
     "uILUP-BR9kPhMpoOfE-JVeSDBX7qcR7ly51oeDotYI9hrrsd3rvJKCCuH2iox2Ee8pQ"
@@ -113,13 +114,14 @@ function changeFunc($i, $p) {
       "https://www.universal-tutorial.com/api/" + "cities" + "/" + $i + "/";
   }
 
+ 
+  req.open("GET", url, true);
   req.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var myArr = JSON.parse(this.responseText);
       myFunction1(myArr);
     }
   };
-  req.open("GET", url, true);
   let temp = "Bearer " + tok;
   console.log(tok);
   if (tok != undefined) {
@@ -253,6 +255,4 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-$(function () {
-  $("#accordion").accordion({ collapsible: true, active: false });
-});
+
