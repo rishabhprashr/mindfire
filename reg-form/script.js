@@ -17,12 +17,6 @@ function myFunction(arr) {
   }
 }
 
-function func() {
-  console.log("func");
-  var ul = document.getElementById("myUL");
-  ul.innerHTML = "";
-}
-
 // function searchUser() {
 //   console.log(ulist);
 
@@ -96,7 +90,7 @@ function locfunc() {
 //   input.style.display=l;
 //   document.getElementById("selectname").value = l;
 // }
-
+var flag = false;
 function changeFunc($i, $p) {
   // console.log($p);
   var req = new XMLHttpRequest();
@@ -106,9 +100,17 @@ function changeFunc($i, $p) {
   if ($p === "state") {
     var url =
       "https://www.universal-tutorial.com/api/" + $p + "s" + "/" + $i + "/";
+    if ($i != 0) {
+      var ul = document.getElementById("state");
+      ul.innerHTML = "";
+    }
+    
   }
   if ($p === "city") {
-    var url = "https://www.universal-tutorial.com/api/" +"cities"+ "/" + $i + "/";
+    var ul = document.getElementById("city");
+    ul.innerHTML = "";
+    var url =
+      "https://www.universal-tutorial.com/api/" + "cities" + "/" + $i + "/";
   }
 
   req.onreadystatechange = function () {
@@ -236,8 +238,6 @@ function autocomplete(inp, arr) {
 }
 autocomplete(document.getElementById("selectname"), ulist);
 
-
-
 var acc = document.getElementsByClassName("accordion");
 var i;
 
@@ -252,3 +252,7 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+$(function () {
+  $("#accordion").accordion({ collapsible: true, active: false });
+});

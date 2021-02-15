@@ -60,7 +60,7 @@ select {
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
 .accordion:hover {
-  background-color: transparent;
+  background-color: parent;
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -71,3 +71,8 @@ select {
   display: none;
   overflow: hidden;
 }
+
+/* .show
+{
+   display: block;
+} */
