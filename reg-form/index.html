@@ -82,7 +82,10 @@
             method="post"
           >
             <div class="col-md-12 mb-3">
-              <button class="accordion">Personal Information</button>
+              <!-- <button class="accordion">Personal Information</button> -->
+              <a class="p-2 waves-effect waves-light btn-large accordion"
+                ><i class="material-icons left">person_add</i>Personal Info</a
+              >
               <div class="panel">
                 <div class="autocomplete form-group">
                   <i class="material-icons prefix">account_circle</i>
@@ -95,6 +98,9 @@
                     placeholder="John Doe"
                     title="Type in a name"
                   />
+                  <div class="invalid-feedback">
+                    Please select a valid name.
+                  </div>
                 </div>
 
                 <!-- <ul id="myUL"  >
@@ -126,6 +132,9 @@
                   <small id="emailHelp" class="form-text text-muted"
                     >We'll never share your email with anyone else.</small
                   >
+                  <div class="invalid-feedback">
+                    Please select a valid Email.
+                  </div>
                 </div>
 
                 <div class="row">
@@ -194,7 +203,9 @@
             </div>
 
             <div class="col-md-12 mb-3">
-              <button class="accordion">Address Information</button>
+              <a class="p-2 waves-effect waves-light btn-large accordion"
+                ><i class="material-icons left">place</i>Address Info</a
+              >
               <div class="panel">
                 <div class="form-group">
                   <i class="material-icons prefix">add_location</i>
@@ -222,7 +233,7 @@
                   </small>
                 </div>
                 <div class="row">
-                  <div class="col-md-5 mb-3">
+                  <div class="col-md-3 mb-3">
                     <i class="material-icons prefix">assistant_photo</i>
                     <label for="country">Country</label>
                     <select
@@ -238,19 +249,35 @@
                       Please select a valid country.
                     </div>
                   </div>
-                  <div class="col-md-4 mb-3">
+                  <div class="col-md-3 mb-3">
                     <i class="material-icons prefix">location_city</i>
                     <label for="state">State</label>
                     <select
                       class="select custom-select d-block w-100"
                       id="state"
                       placeholder="State"
+                      onchange="changeFunc(value,'city')"
                       required
                     >
                       <option value="-1">Choose...</option>
                     </select>
                     <div class="invalid-feedback">
                       Please provide a valid state.
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <i class="material-icons prefix">location_on</i>
+                    <label for="city">City</label>
+                    <select
+                      class="select custom-select d-block w-100"
+                      id="city"
+                      placeholder="City"
+                      required
+                    >
+                      <option value="-1">Choose...</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please provide a valid city.
                     </div>
                   </div>
                   <div class="col-md-3 mb-3">
@@ -270,33 +297,10 @@
             </div>
 
             <div class="col-md-12 mb-3">
-              <button class="accordion">Academic Information</button>
+              <a class="p-2 waves-effect waves-light btn-large accordion"
+                ><i class="material-icons left">school</i>Academic Info</a
+              >
               <div class="panel">
-                <div class="row">
-                  <div class="col-md-4 mb-3">
-                    <i class="material-icons prefix">library_books</i>
-                    <label for="course">Course applied for</label>
-                    <select
-                      class="custom-select d-block w-100"
-                      id="course"
-                      required
-                    >
-                      <option value="-1">Choose...</option>
-                      <option>Computer Science</option>
-                      <option>Information Technology</option>
-                      <option>Electronics and Electrical</option>
-                    </select>
-                    <div class="invalid-feedback">Choice required.</div>
-                  </div>
-
-                  <div class="col-md-4 mb-3">
-                    <i class="material-icons prefix">attach_file</i>
-                    <label for="myfile">Academic docs zip:</label>
-                    <input type="file" id="myfile" name="myfile" />
-                    <div class="invalid-feedback">Choice required.</div>
-                  </div>
-                </div>
-
                 <div class="row">
                   <div class="col-md-4 mb-3">
                     <div class="form-group">
@@ -375,6 +379,30 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <i class="material-icons prefix">library_books</i>
+                    <label for="course">Course applied for</label>
+                    <select
+                      class="custom-select d-block w-100"
+                      id="course"
+                      required
+                    >
+                      <option value="-1">Choose...</option>
+                      <option>Computer Science</option>
+                      <option>Information Technology</option>
+                      <option>Electronics and Electrical</option>
+                    </select>
+                    <div class="invalid-feedback">Choice required.</div>
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                    <i class="material-icons prefix">attach_file</i>
+                    <label for="myfile">Academic docs zip:</label>
+                    <input type="file" id="myfile" name="myfile" />
+                    <div class="invalid-feedback">Choice required.</div>
+                  </div>
+                </div>
               </div>
             </div>
             <hr class="mb-4" />
@@ -390,6 +418,33 @@
         </div>
       </div>
     </div>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5>Institute Vision and Mission:</h5>
+            <p>
+              Vision: To become a center of excellence in the fields of
+              technical education & research and create responsible citizens.
+              Mission: To provide the best of technical skills, professional
+              ethics and human values in enriching the disciplines of Science,
+              Engineering and Technology for social development and Nation
+              building.
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 >About</h5>
+            <ul>
+              <li><a href="#!">Alumini</a></li>
+              <li><a href="#!">Grievances</a></li>
+              <li><a href="#!">Campus</a></li>
+              <li><a href="#!">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright"></div>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

@@ -102,11 +102,13 @@ function changeFunc($i, $p) {
   var req = new XMLHttpRequest();
   if ($p === "country") {
     var url = "https://www.universal-tutorial.com/api/countries/";
-  } else if ($p === "state") {
+  }
+  if ($p === "state") {
     var url =
       "https://www.universal-tutorial.com/api/" + $p + "s" + "/" + $i + "/";
-  } else {
-    var url = "https://www.universal-tutorial.com/api/" + $p + "/" + $i + "/";
+  }
+  if ($p === "city") {
+    var url = "https://www.universal-tutorial.com/api/" +"cities"+ "/" + $i + "/";
   }
 
   req.onreadystatechange = function () {
@@ -234,11 +236,13 @@ function autocomplete(inp, arr) {
 }
 autocomplete(document.getElementById("selectname"), ulist);
 
+
+
 var acc = document.getElementsByClassName("accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
+  acc[i].addEventListener("click", function () {
     this.classList.toggle("active");
     var panel = this.nextElementSibling;
     if (panel.style.display === "block") {
