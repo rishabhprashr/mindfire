@@ -29,6 +29,7 @@
       href="css/materialize.min.css"
       media="screen,projection"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -134,7 +135,8 @@
                     id="email"
                     placeholder="John@email.com"
                     aria-describedby="emailHelp"
-                    maxlength="30"
+                    data-length="20"
+                    required
                     onblur="check(id)"                    
                     onfocus="check(id)" 
                     onchange="check(id)"
@@ -159,7 +161,7 @@
                       id="mobno"
                       placeholder="Mobile"
                       required
-                      maxlength="10"
+                      data-length="10"
                       onblur="check(id)"                    
                       onfocus="check(id)" 
                       onchange="check(id)"
@@ -210,7 +212,7 @@
                       id="aadhar"
                       placeholder="Aadhar no"
                       required
-                      maxlength="12"
+                      data-length="12"
                       onblur="check(id)"                    
                       onfocus="check(id)" 
                       onchange="check(id)"
@@ -248,7 +250,7 @@
                     id="address1"
                     placeholder="Patia ..."
                     required
-                    maxlength="30"
+                    data-length="30"
                     onblur="check(id)"                    
                     onfocus="check(id)" 
                     onchange="check(id)"
@@ -261,7 +263,7 @@
                     class="form-control validate"
                     id="address2"
                     required
-                    maxlength="30"
+                    data-length="30"
                     onblur="check(id)"                    
                     onfocus="check(id)" 
                     onchange="check(id)"
@@ -336,6 +338,7 @@
                       class="form-control validate"
                       id="zip"
                       placeholder="Zip"
+                      data-length="6"
                       required
                       onblur="check(id)"                    
                       onfocus="check(id)" 
@@ -363,6 +366,7 @@
                         id="board10"
                         placeholder="Board"
                         required
+                        data-length="6"
                         onblur="check(id)"                    
                         onfocus="check(id)" 
                         onchange="check(id)"
@@ -379,6 +383,7 @@
                         id="percentage10"
                         placeholder="percentage"
                         required
+                        data-length="6"
                         onblur="check(id)"                    
                         onfocus="check(id)" 
                         onchange="check(id)"
@@ -396,6 +401,7 @@
                         id="yop10"
                         placeholder="Year of passing"
                         required
+                        data-length="4"
                         onblur="check(id)"                    
                         onfocus="check(id)" 
                         onchange="check(id)"
@@ -414,6 +420,7 @@
                         id="board12"
                         placeholder="Board"
                         required
+                        data-length="6"
                         onblur="check(id)"                    
                         onfocus="check(id)" 
                         onchange="check(id)"
@@ -430,6 +437,7 @@
                         id="percentage12"
                         placeholder="percentage"
                         required
+                        data-length="6"
                         onblur="check(id)"                    
                         onfocus="check(id)" 
                         onchange="check(id)"
@@ -447,6 +455,7 @@
                         id="yop12"
                         placeholder="Year of passing"
                         required
+                        data-length="6"
                         onblur="check(id)"                    
                         onfocus="check(id)" 
                         onchange="check(id)"
