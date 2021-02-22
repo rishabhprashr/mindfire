@@ -77,7 +77,7 @@
         <div class="col-md-12">
           <form
             name="myForm"
-            action="/action_page.php"
+            action="#"
             autocomplete="off"
             method="post"
           >
@@ -193,9 +193,7 @@
                       id="country"
                       placeholder="Country"
                       onchange="changeFunc(value,'state')"
-                      onkeydown="validateLoc(value)"
-                     
-                    >
+                      >
                       <option value="-1">Choose</option>
                     </select>
                     <span class="helper-text" ></span>
@@ -327,7 +325,7 @@
               type="submit"
               class="btn waves-effect waves-light btn-primary btn-lg btn-block"
               style="align-self: center;"
-              onclick="formValidate()"
+              onsubmit="formValidate()"
             >
               Submit
 

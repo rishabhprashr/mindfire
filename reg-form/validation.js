@@ -16,9 +16,8 @@ function ValidateDob(val){
     }
 }
 
-function formValidate(){
 
-}
+
 
 $(document).ready(function(){
   $("#selectname").focusout(function(){
@@ -68,6 +67,14 @@ $(document).ready(function(){
       $(".helper-text").eq(4).html("");
     }
   });
+  $("#country").focusout(function(){
+    var a=$(this).val();
+    if(a==""){
+      $(".helper-text").eq(5).html("<p>*Enter the address Correctly</p>");
+    }else{
+      $(".helper-text").eq(5).html("");
+    }
+  });
   $("#zip").focusout(function(){
     var a=$(this).val();
     var zip = /^\d{6}$/;
@@ -101,5 +108,7 @@ $(document).ready(function(){
       $(".helper-text").eq(11).html("");
     }
   });
+
   
 });
+
