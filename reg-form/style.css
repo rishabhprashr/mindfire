@@ -72,6 +72,10 @@ select {
   overflow: hidden;
 }
 
+.helper-text{
+  color:red;
+}
+
 
 
 /* .show
