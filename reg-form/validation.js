@@ -2,21 +2,23 @@ function ValidateEmail(mail)
 {
  if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myForm.emailAddr.value))
   {
-    return (true)
+    return true;
   }
-    alert("You have entered an invalid email address!")
-    return (false)
+    return false;
 } 
-function ValidateDob(val){
+
+
+function formValidate(){
+  console.log("1");
+
   
-    if($("#dob").value==""){
-      $(".helper-text").eq(3).html("<p>*Enter the dob Correctly</p>");
-    }else{
-      $(".helper-text").eq(3).html("");
-    }
+  if($("#selectname").value=="" && $("#email").value=="" && $("#mobno").value=="" &&
+  $("#address").value=="" && $("#zip").value=="" && $("#yop12").value=="" && $("#board12").value==""
+  && $("#percentage12").value==""){
+    console.log("error");
+    $(".helper-text").html("Error");
+  }
 }
-
-
 
 
 $(document).ready(function(){
