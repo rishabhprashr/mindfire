@@ -1,4 +1,7 @@
 import React from "react";
+import axios from "axios";
+
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -12,14 +15,45 @@ class Home extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleValidation = this.handleValidation.bind(this);
+    this.handleSelect=this.handleSelect.bind(this);
   }
+  
+
+  handleSelect = async event => {
+  
+    var res=await axios.get("https://www.universal-tutorial.com/api/getaccesstoken",{
+      headers:{
+          "api-token":"uILUP-BR9kPhMpoOfE-JVeSDBX7qcR7ly51oeDotYI9hrrsd3rvJKCCuH2iox2Ee8pQ",
+          "user-email":"rishabhprashr@gmail.com"
+      }
+  });
+  let auth_token = res.data.auth_token;
+  console.log(auth_token);
+  var res=await axios.get("https://www.universal-tutorial.com/api/countries/",{
+            headers:{
+                "Authorization":`Bearer ${auth_token}`
+            }
+        }); 
+        for(let i=0;i<res.data.length;i++){
+            console.log(res.data);
+           // html+=`<option name=${res.data[i].country_name}>${res.data[i].country_name}</option>`;
+            
+        }
+            
+  
+    console.log(res);
+    console.log(res.data);
+  };
+  
+
   handleValidation() {
     let errors = {};
     let formIsValid = true;
     let name = this.state.name;
     let email = this.state.email;
-    let address = this.state.address;
     let mobno = this.state.mobno;
+    let address = this.state.address;
+    
 
     console.log(name);
 
@@ -58,7 +92,7 @@ class Home extends React.Component {
     }
     if (typeof mobno !== "undefined") {
       var phoneno = /^\d{10}$/;
-      if (!mobno.match(phoneno)) {
+      if (!mobno.match(phoneno) && mobno.length!=10) {
         formIsValid = false;
         errors["mobno"] = "*Please enter valid mobile number.";
       }
@@ -75,9 +109,9 @@ class Home extends React.Component {
   }
 
   handleChange(event) {
-    let nam = event.target.name;
+    let name = event.target.name;
     let val = event.target.value;
-    this.setState({ [nam]: val });
+    this.setState({ [name]: val });
     this.handleValidation();
 
   }
@@ -170,7 +204,7 @@ class Home extends React.Component {
                 className="custom-select d-block w-100 validate"
                 name="country"
                 value={this.state.value}
-                placeholder="Country"
+                onChange={(e)=>this.handleSelect}
               >
                 <option value="-1">Choose</option>
               </select>
