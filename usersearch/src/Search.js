@@ -75,18 +75,17 @@ class Search extends React.Component {
             <p id="bio" style={{ textAlign: "center" }}></p>
             <div className="row>">
               <div className="col-md-12 mb-3">
-                <label>Name:</label>
                 <input
                   type="text"
                   name="name"
+                  placeholder="Enter name to search..."
                   value={this.state.value}
                   onChange={this.handleChange}
                 />
               </div>
             </div>
             <br></br>
-            <span style={{ color: "red" ,
-            textAlign:"center"}}>{this.state.errors["name"]}</span>
+            <p style={{ color: "red", textAlign: "center" }}>{this.state.errors["name"]}</p>
 
             <input
               type="submit"
