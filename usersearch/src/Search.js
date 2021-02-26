@@ -3,9 +3,13 @@ import React from "react";
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      fields: {},
+      errors: {},
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleValidation = this.handleValidation.bind(this);
   }
 
   handleChange(event) {
@@ -14,13 +18,29 @@ class Search extends React.Component {
     this.setState({ [name]: val });
   }
 
+  handleValidation() {
+    let errors = {};
+    let formIsValid = true;
+    let name = this.state.name;
+    if (name === "" || name === undefined) {
+      formIsValid = false;
+      errors["name"] = "*Please enter name.";
+    }
+    this.setState({ errors: errors });
+
+    return formIsValid;
+  }
+
   async handleSubmit(e) {
     e.preventDefault();
-    const response = await fetch(
-      `https://api.github.com/users/${this.state.name}`
-    );
-    const user = await response.json();
-    this.setState({ user: user });
+    if (this.handleValidation()) {
+        const response = await fetch(
+            `https://api.github.com/users/${this.state.name}`
+          );
+          const user = await response.json();
+          this.setState({ user: user });
+      } 
+    
   }
 
   render() {
@@ -33,8 +53,6 @@ class Search extends React.Component {
       document.getElementById("img").src = user.avatar_url;
       document.getElementById("img").className =
         "d-block mx-auto mb-4 circle responsive-img";
-
-      // Gather up some number stats about the user, to be used in a map below
     }
 
     return (
@@ -44,16 +62,15 @@ class Search extends React.Component {
         </div>
         <div className="col-md-12 mb-3">
           <form onSubmit={this.handleSubmit}>
-            <img className="d-none" id="img" width="172" height="172" alt="" />
+            <img className="d-block mx-auto mb-4 circle responsive-img"
+             id="img" width="172" height="172" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPxjKOU8aG3SpCX3CbQyZcocXLLdeo6bl-w&usqp=CAU" />
             <h2 id="usrname" style={{ textAlign: "center" }}>
-              &nbsp;
             </h2>
             <a
               id="usrurl"
               style={{ textAlign: "center", display: "block" }}
               href="www.google.com"
             >
-              &nbsp;
             </a>
             <p id="bio" style={{ textAlign: "center" }}></p>
             <div className="row>">
@@ -68,6 +85,8 @@ class Search extends React.Component {
               </div>
             </div>
             <br></br>
+            <span style={{ color: "red" ,
+            textAlign:"center"}}>{this.state.errors["name"]}</span>
 
             <input
               type="submit"
