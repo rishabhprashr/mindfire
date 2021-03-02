@@ -1,4 +1,5 @@
-import Search from './Search';
+import GithubSearch from './GithubSearch';
+import './App.css';
 
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <div className="content">
-        <Search/>
+        <GithubSearch/>
       </div>
     </div>
   );
