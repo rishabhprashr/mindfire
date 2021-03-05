@@ -2,7 +2,7 @@ import MovieSearch from "./MovieSearch.js";
 
 function App() {
   return (
-    <div className="App bg-dark container text-center text-light">
+    <div className="App container text-center text-light">
       <MovieSearch />
     </div>
   );
