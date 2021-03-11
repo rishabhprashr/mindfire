@@ -1,85 +1,105 @@
 import React, { useState } from "react";
+import "./App.css";
 import axios from "axios";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Row,
-  Col,
-} from "reactstrap";
+import { API_URL, API_KEY } from "./config";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Button } from "reactstrap";
+import { useDispatch,useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { ySearch, aData ,fData} from "./redux/IsSearchActions.js";
 
 function Search() {
   const [movie, changeMovie] = useState("");
   const [search, updateSearch] = useState("");
-  const [movieInfo, updateMovieInfo] = useState({});
+  const [movieInfo, updateMovieInfo] = useState([]);
   const [errorText, updateErrorText] = useState("");
 
-  function addHTML(res) {
-    let obj = {
-      search: res.data.Title,
-    };
+  let test = {};
 
-    if (res.data.Title) obj = { ...obj, name: `Name: ${res.data.Title}` };
-    if (res.data.Year)
-      obj = { ...obj, year: `Year of Release: ${res.data.Year}` };
-    if (res.data.Rated) obj = { ...obj, rated: `PG-Rating: ${res.data.Rated}` };
-    if (res.data.imdbRating)
-      obj = { ...obj, imdb: `IMDB Rating: ${res.data.imdbRating}` };
-    if (res.data.Plot) obj = { ...obj, plot: `Plot: ${res.data.Plot}` };
-    console.log(JSON.stringify(obj));
-    if (res.data.Poster) obj = { ...obj, poster: `${res.data.Poster}` };
-    console.log(JSON.stringify(obj));
-    updateMovieInfo(obj);
+  const dispatch = useDispatch();
+
+  function addHTML(res) {
+    console.log(res.data.results);
+    res.data.results.map((movie) => {
+      console.log(movie);
+    });
+    updateMovieInfo(res.data.results);
+    test = res.data.results;
+    console.log("test = " + test);
+  }
+
+  function display(movieInfo) {
+    //console.log("123" + JSON.stringify(movieInfo));
+    return movieInfo.map((movie) => {
+      console.log("123" + JSON.stringify(movie));
+      
+      return (
+        <Link to={`/search/${movie.id}`} onClick={()=>dispatch(aData(movie.id))}>
+          <div
+            className="card col-md-4 cust"
+            key={movie.id}
+            style={{ borderRadius: "10px", backgroundColor: "#101010" }}
+          >
+            <div className="movie-card">
+              <img
+                src={"https://image.tmdb.org/t/p/w1280" + movie.poster_path}
+                width="300"
+                height="300"
+                style={{
+                  marginTop: "20px",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  borderRadius: "10px",
+                }}
+                alt=""
+              />
+
+              <p className="movie-name">{movie.title}</p>
+              <p className="movie-rating">{"Rating:" + movie.vote_average}</p>
+            </div>
+          </div>
+        </Link>
+      );
+    });
   }
 
   function handleSearch(event) {
+    dispatch(ySearch());
     updateSearch(movie);
-
-    console.log(`user = ${movie} and login = ${search}`);
     if (movie === "" || movie === null) {
       updateErrorText("Input field is empty");
       updateMovieInfo({ error: "" });
     } else if (search !== movie) {
       axios
         .get(
-          `http://www.omdbapi.com/?t=${movie
-            .split(" ")
-            .join("+")}&apikey=9cebfeb8`
+          `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${movie}`
         )
         .then((res) => {
-          console.log(res.data);
+          // console.log("user"+JSON.stringify(res));
           if (res.data.Response === "False") {
             updateMovieInfo({
               error: "Sorry, there seems to be no movie with this name.",
             });
           } else {
-            updateSearch(res.data.Title);
+            updateSearch(movie);
             addHTML(res);
           }
         })
         .catch((error) => {
-          console.log(`${error.response.status} error is ${error}`);
-          if (error.response.status === 404) {
-            updateMovieInfo({
-              error: "Sorry, there seems to be no movie with this name.",
-            });
-          }
+          
         });
+      
     }
-    console.log(`movieInfo = ${movieInfo}`);
     event.preventDefault();
   }
 
   return (
     <div style={{ fontSize: "20px" }}>
+      {/* {console.log(`movies log = ${movieInfo}`)} */}
       <form action="#" onSubmit={handleSearch}>
         <input
           id="text-field"
-          style={{borderRadius: "6px"}}
+          style={{ borderRadius: "6px", color: "black" }}
           placeholder="Enter a movie to search.."
           value={movie}
           onChange={(ev) => {
@@ -89,53 +109,17 @@ function Search() {
           type="text"
           autoFocus
         />
-        <Button color="primary" style={{ marginLeft: "20px",borderRadius: "6px" }}>
+        <Button
+          color="primary"
+          style={{ marginLeft: "20px", borderRadius: "6px" }}
+        >
           Search
         </Button>
 
-        {/*used to display error texts, if any*/}
         <div style={{ color: "red" }}>{errorText}</div>
 
         <div style={{ marginTop: "20px" }}>{movieInfo.error}</div>
-
-        {/* conditional rendering, only if the avatar_url is available */}
-        {movieInfo.name ? (
-          <Row>
-            <Col sm="6" style={{ margin: "auto" }}>
-              <Card  style={{borderRadius: "10px",backgroundColor:"#101010"}}>
-                <CardImg
-                  style={{
-                    marginTop: "20px",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    width: "200px",
-                    height: "250px",
-                    borderRadius: "10px"
-                  }}
-                  alt="poster"
-                  src={movieInfo.poster}
-                />
-                <CardBody>
-                  <CardTitle tag="h5">{movieInfo.name}</CardTitle>
-                  <CardSubtitle tag="h6" className="mb-2">
-                    {movieInfo.plot}
-                  </CardSubtitle>
-                  <CardText>
-                    <div>{movieInfo.year}</div>
-                    <div>{movieInfo.rated}</div>
-                    <div>
-                      {movieInfo.imdb}
-                      <i
-                        className="fas fa-star"
-                        style={{ fontSize: "20px", color: "yellow" }}
-                      ></i>
-                    </div>
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        ) : null}
+        <div>{display(movieInfo)}</div>
       </form>
     </div>
   );

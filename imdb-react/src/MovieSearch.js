@@ -1,6 +1,7 @@
 import React from "react";
 import Search from "./Search.js";
 import { Row, Col } from "reactstrap";
+import {Link} from 'react-router-dom';
 
 function MovieSearch() {
   return (
@@ -16,7 +17,9 @@ function MovieSearch() {
               borderRadius: "8px",
             }}
           >
-            <h2>Movie Search</h2>
+            <Link to={'/'}>
+          <h2>Movie Search</h2>
+          </Link>
           </Col>
         </Row>
       </div>
